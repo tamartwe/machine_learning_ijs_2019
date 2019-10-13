@@ -11,6 +11,7 @@
   "dependencies": {
     "body-parser": "^1.19.0",
     "decision-tree": "^0.3.1",
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "requests": "^0.3.0"
   }
 }

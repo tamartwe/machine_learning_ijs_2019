@@ -23,3 +23,7 @@ exports.predict = (color, shape) => {
         shape: shape
     });
 }
+
+exports.evaluate = (test_data) => {
+    return dt.evaluate(test_data);
+}

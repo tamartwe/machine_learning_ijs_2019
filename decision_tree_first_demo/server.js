@@ -15,9 +15,14 @@ app.use(bodyParser.json());
 // Create our Express router
 const router = express.Router();
 
-// Create endpoint handlers for /
-router.route('/')
+// Create endpoint handlers for /predict
+router.route('/predict')
   .get(decisionTreeController.predict);
+
+
+// Create endpoint handlers for /evaluate
+router.route('/evaluate')
+  .get(decisionTreeController.evaluate);
 
 
 // Register all our routes with /api
