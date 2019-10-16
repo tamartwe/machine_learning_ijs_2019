@@ -1,29 +1,32 @@
-const tf = require('@tensorflow/tfjs')
-const tf_node = require('@tensorflow/tfjs-node');
-const mobilenet = require('@tensorflow-models/mobilenet');
+const express = require('express');
+const bodyParser = require('body-parser');
+const port = process.env.PORT || 3000;
+const ml_model = require('./tensor_model')
 
-const fs = require('fs');
-const jpeg = require('jpeg-js');
+const app = express();
 
-const loadModel = async () => {
-  const mn = await mobilenet.load();
-  return mn;
-}
+// Use the body-parser package in our application
+app.use(bodyParser.urlencoded({
+  extended: true
+}));
+app.use(bodyParser.json());
 
-const classify = async (path) => {
-  const image_buf = fs.readFileSync(path);
-  const input = tf_node.node.decodeJpeg(image_buf);
-  const  mn_model = await loadModel();
-  const predictions = await mn_model.classify(input)
 
-  console.log('classification results:', predictions[0].className)
-}
+const router = express.Router();
 
-const runFlow = async() => {
-  const panda_image = '/Users/tamarstern/Documents/ijs_munich_2019/machine_learning/image_classification_demo/panda.jpg'
-  await classify(panda_image);
-  const rabbit_image = '/Users/tamarstern/Documents/ijs_munich_2019/machine_learning/image_classification_demo/rabbit.jpg'
-  await classify(rabbit_image);
-}
+ml_model.init()
 
-runFlow();
+router.get('/classify', async (req, res) => {
+    const image_name = req.query.image_name;
+    preidction = await ml_model.classify(image_name);
+    return res.json({ 'result': preidction });
+  });
+  
+  
+app.use('/api', router);
+  
+// Start the server
+app.listen(port);
+console.log('server is up ' + port);
+  
+  
