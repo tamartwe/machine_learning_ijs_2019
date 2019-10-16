@@ -47,7 +47,7 @@ const classify = async (path) => {
   const  mn_model = await loadModel()
   const predictions = await mn_model.classify(input)
 
-  console.log('classification results:', predictions)
+  console.log('classification results:', predictions[0].className)
 }
 
 const image = '/Users/tamarstern/Documents/ijs_munich_2019/machine_learning/image_classification_demo/panda.jpg'
