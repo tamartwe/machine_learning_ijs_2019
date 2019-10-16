@@ -5,9 +5,6 @@ const mobilenet = require('@tensorflow-models/mobilenet');
 const fs = require('fs');
 const jpeg = require('jpeg-js');
 
-const NUMBER_OF_CHANNELS = 3
-
-
 const loadModel = async () => {
   const mn = await mobilenet.load();
   return mn;
@@ -22,6 +19,11 @@ const classify = async (path) => {
   console.log('classification results:', predictions[0].className)
 }
 
-const image = '/Users/tamarstern/Documents/ijs_munich_2019/machine_learning/image_classification_demo/panda.jpg'
+const runFlow = async() => {
+  const panda_image = '/Users/tamarstern/Documents/ijs_munich_2019/machine_learning/image_classification_demo/panda.jpg'
+  await classify(panda_image);
+  const rabbit_image = '/Users/tamarstern/Documents/ijs_munich_2019/machine_learning/image_classification_demo/rabbit.jpg'
+  await classify(rabbit_image);
+}
 
-classify(image);
+runFlow();
