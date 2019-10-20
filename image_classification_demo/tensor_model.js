@@ -12,7 +12,7 @@ exports.init = async () => {
 }
 
 exports.classify = async (image_name) => {
-  const path = `${__dirname}/${image_name}`;
+  const path = `${__dirname}/images/${image_name}`;
   const image_buf = fs.readFileSync(path);
   const input = tf_node.node.decodeJpeg(image_buf);
   const predictions = await mn.classify(input)
