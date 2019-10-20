@@ -1,0 +1,9 @@
+<ul class="images">
+    <li *ngFor="let image of images"
+        [class.selected]="image === selectedImage"
+        (click)="onSelect(image)">
+        <span>{{image.imageTitle}}</span>
+    </li>
+  </ul>
+
+  <app-image-detail [image]="selectedImage"></app-image-detail>

@@ -1,9 +1,14 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const cors = require('cors');
 const port = process.env.PORT || 3000;
 const ml_model = require('./tensor_model')
 
 const app = express();
+
+app.use(cors());
+app.options('*', cors());
+
 
 // Use the body-parser package in our application
 app.use(bodyParser.urlencoded({

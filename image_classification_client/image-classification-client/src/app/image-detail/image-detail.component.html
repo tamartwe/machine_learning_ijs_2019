@@ -1,0 +1,11 @@
+<div *ngIf="image">
+    <span>
+        <img src = "{{image.path}}"  
+         width="250" 
+         height="200" 
+         (click)="getPrediction()"
+          class="container"/>
+        <span>{{image.prediction}}</span>    
+      </span>   
+     
+</div>
