@@ -29,7 +29,7 @@ function encode(arg) {
    return arg.split('').map(x => (x.charCodeAt(0) / 255));
 }
 
-function processTrainingData(data) {
+const processTrainingData = (data) => {
    return data.map(d => {
        return {
            input: encode(d.input),

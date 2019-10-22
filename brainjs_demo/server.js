@@ -14,7 +14,7 @@ app.use(bodyParser.json());
 
 const router = express.Router();
 
-ml_model.train()
+ml_model.train();
 
 router.get('/', async (req, res) => {
     const phrase = req.body.phrase;

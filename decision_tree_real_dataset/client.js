@@ -6,7 +6,7 @@ const test_data = [
     {"type":"t", "distance": 2.5, "rooms": 3}
 ];
 
-getPrediction = async (distance, rooms, type) => {
+const getPrediction = async (distance, rooms, type) => {
     const options = {
         uri: 'http://localhost:3000/predict',
         qs: {
@@ -45,7 +45,7 @@ const showError = async () => {
     console.log(logLine);
 }
 
-runErrorFlow = async () => {
+const runErrorFlow = async () => {
     await showPredictions();
     await showError();
 }

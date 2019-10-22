@@ -23,10 +23,10 @@ const init = async () => {
 
 init();
 
-exports.predict = (distnace, rooms, type) =>{
+exports.predict = (distance, rooms, type) =>{
     const predicted_price = dt.predict({
         Rooms: rooms,
-        Distance: distnace,
+        Distance: distance,
         Type: type
     });
     return predicted_price;

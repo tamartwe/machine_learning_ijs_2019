@@ -1,7 +1,7 @@
 const rp = require('request-promise');
 
 
-getPrediction = async (image_name) => {
+const getPrediction = async (image_name) => {
     const options = {
         uri: 'http://localhost:3000/api/classify',
         qs: {
@@ -22,7 +22,7 @@ const showPredictions = async () => {
     return await Promise.all(['panda.jpg', 'rabbit.jpg'].map(item => getPrediction(item)));
 }
 
-runFlow = async () => {
+const runFlow = async () => {
     await showPredictions();
 }
 
